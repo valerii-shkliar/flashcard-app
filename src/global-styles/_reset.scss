@@ -1,4 +1,4 @@
-@use './variables' as *;
+@use 'variables' as *;
 
 * {
   padding: 0px;
@@ -11,12 +11,9 @@
 *::after {
   box-sizing: border-box;
 }
-html {
-  font-family: var(--font-poppins-regular);
-}
 
 body {
-  background: var(--colors-neutral-100);
+  background-color: #f7f3f0;
 }
 
 .featureWrapper {
