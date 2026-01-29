@@ -3,7 +3,7 @@ import style from './Header.module.scss';
 import logoIcon from '/logo-icon.svg';
 import logoTitle from '/logo-title.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { getActiveMode, setActiveMode } from '../../../store/mainSlice';
+import { getActiveMode, setActiveMode } from '../../../store/appModeSlice';
 import { CARDS_MODE, STUDY_MODE } from '../../../constants/data';
 
 function Header() {

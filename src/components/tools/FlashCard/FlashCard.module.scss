@@ -1,0 +1,134 @@
+@use '../../../global-styles/setup-style' as *;
+
+.flashCard {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-16);
+  border: var(--border-flash-card);
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+  background: var(--color-neutral-0);
+  color: var(--color-neutral-900);
+
+  .question {
+    @include text-preset-3;
+    padding: var(--spacing-200);
+    border-bottom: var(--border-flash-card);
+  }
+  .contentContainer {
+    padding: var(--spacing-200);
+    border-bottom: var(--border-flash-card);
+    flex-basis: 100%;
+
+    .kind {
+      @include text-preset-5;
+      opacity: 0.6;
+      margin-bottom: var(--spacing-75);
+    }
+    .answer {
+      @include text-preset-5;
+    }
+  }
+  .extraDetailsContainer {
+    @include flex_horizonAlign(space-between);
+
+    .areaContainer,
+    .areaContainer,
+    .btnContainer {
+      padding: var(--spacing-200);
+    }
+
+    .areaContainer {
+      border-right: var(--border-flash-card);
+      padding-right: var(--spacing-125);
+
+      .area {
+        @include btn_like_box;
+        text-wrap-mode: nowrap;
+      }
+    }
+    .progressContainer {
+      padding-left: var(--spacing-100);
+      @include flex_verticalAlign(center);
+      gap: var(--spacing-100);
+
+      .masterCard {
+        @include btn_like_box;
+        @include flex_verticalAlign(center);
+        gap: var(--spacing-75);
+        background-color: var(--color-teal-400);
+
+        .icon {
+          width: 16px;
+          height: 16px;
+        }
+        .text {
+          @include text-preset-6;
+          letter-spacing: -0.03em;
+        }
+        .progressData {
+          @include text-preset-6;
+          opacity: 0.8;
+          letter-spacing: -0.03em;
+        }
+      }
+
+      .progressBar {
+        border: var(--border-flash-card);
+        border-radius: var(--radius-full);
+        width: 60px;
+        height: 8px;
+
+        .filler {
+          display: block;
+          background-color: var(--color-neutral-900);
+          border-radius: var(--radius-full);
+          height: 100%;
+          width: 0;
+        }
+      }
+      .progressData {
+        @include text-preset-6;
+        opacity: 0.8;
+        letter-spacing: -0.03em;
+      }
+    }
+    .btnContainer {
+      border-left: var(--border-flash-card);
+      padding-left: var(--spacing-100);
+      margin-left: auto;
+      position: relative;
+
+      .actionsBtn {
+        @include flex_center;
+        border: 1px solid transparent;
+        border-radius: var(--radius-4);
+        transition: var(--transition);
+
+        .icon {
+          width: 24px;
+          height: 24px;
+        }
+
+        &:focus,
+        &:hover {
+          border-color: var(--colors-neutral-900);
+          box-shadow: 2px 2px 0 0 var(--color-neutral-900);
+        }
+      }
+      .actionModal {
+        @include drop_down;
+        right: 5%;
+        bottom: 200%;
+
+        .areaItem {
+          @include area_item;
+        }
+
+        &.active {
+          bottom: 105%;
+        }
+      }
+    }
+  }
+}

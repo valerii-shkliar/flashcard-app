@@ -5,8 +5,8 @@ const initialState = {
   activeMode: STUDY_MODE,
 };
 
-const mainSlice = createSlice({
-  name: 'main',
+const appModeSlice = createSlice({
+  name: 'app-mode',
   initialState,
   reducers: {
     setActiveMode: (state, { payload }) => {
@@ -15,9 +15,9 @@ const mainSlice = createSlice({
   },
 });
 
-export const { setActiveMode } = mainSlice.actions;
-export default mainSlice.reducer;
+export const { setActiveMode } = appModeSlice.actions;
+export default appModeSlice.reducer;
 
 export const getActiveMode = function (state) {
-  return state.main.activeMode;
+  return state.appMode.activeMode;
 };

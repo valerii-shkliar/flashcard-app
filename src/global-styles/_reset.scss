@@ -19,6 +19,16 @@ body {
 .featureWrapper {
   max-width: 1240px;
   margin: auto;
+
+  @media (max-width: 1260px) {
+    padding-left: var(--spacing-400);
+    padding-right: var(--spacing-400);
+  }
+
+  @media (max-width: 500px) {
+    padding-left: var(--spacing-200);
+    padding-right: var(--spacing-200);
+  }
 }
 a,
 a:link,

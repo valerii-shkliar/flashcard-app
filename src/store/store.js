@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import mainReducer from './mainSlice';
+import appModeReducer from './appModeSlice';
+import flashCardsReducer from './flashCardsSlice';
 
 const store = configureStore({
   reducer: {
-    main: mainReducer,
+    appMode: appModeReducer,
+    flashCards: flashCardsReducer,
   },
 });
 
