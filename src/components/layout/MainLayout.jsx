@@ -3,7 +3,7 @@ import CardsSection from '../sections/CardsSection/CardsSection';
 import Header from '../sections/Header/Header';
 import FeatureWrapper from './FeatureWrapper';
 import { getActiveMode } from '../../store/appModeSlice';
-import { STUDY_MODE, CARDS_MODE } from '../../constants/data';
+import { MODE } from '../../constants/data';
 
 function MainLayout() {
   const appMode = useSelector(getActiveMode);
@@ -12,8 +12,8 @@ function MainLayout() {
     <FeatureWrapper>
       <Header />
       <main>
-        {appMode === STUDY_MODE && null}
-        {appMode === CARDS_MODE && <CardsSection />}
+        {appMode === MODE.STUDY && null}
+        {appMode === MODE.CARDS && <CardsSection />}
       </main>
     </FeatureWrapper>
   );

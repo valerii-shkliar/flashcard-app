@@ -1,8 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
-export const STUDY_MODE = 'study-mode';
-export const CARDS_MODE = 'cards-mode';
-export const MAX_PROGRESS_FOR_CARD = 5;
 
+export const MAX_PROGRESS_FOR_CARD = 5;
+export const MODE = {
+  STUDY: 'study',
+  CARDS: 'cards',
+};
 export const areas = [
   'Art',
   'CSS',

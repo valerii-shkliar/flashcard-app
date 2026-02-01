@@ -11,14 +11,8 @@ function CardsSection() {
   const cardsList = useSelector(getVisibleCards);
 
   useEffect(() => {
-    // emulation async-action from server
-    new Promise((resolve) => {
-      resolve(cards);
-    }).then((cards) => {
-      dispatch(saveCards(cards));
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    dispatch(saveCards(cards));
+  }, [dispatch]);
 
   return (
     <section className={style.cardsSection}>

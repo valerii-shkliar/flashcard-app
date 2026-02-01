@@ -1,19 +1,17 @@
 import style from './FlashCard.module.scss';
 import MoreIcon from '../../../assets/icons/more.svg?react';
-import BrainIcon from '../../../assets/icons/brain-solid.svg?react';
 import EditIcon from '../../../assets/icons/edit.svg?react';
 import DeleteIcon from '../../../assets/icons/trash.svg?react';
-import { MAX_PROGRESS_FOR_CARD } from '../../../constants/data';
 import { useState } from 'react';
 import clsx from 'clsx';
+import ProgressBar from '../ProgressBar/ProgressBar';
 
 function FlashCard({ question, answer, area, progress }) {
-  const isMasterCard = progress === MAX_PROGRESS_FOR_CARD;
-  const [isActiveModal, setIsActiveModal] = useState(false);
-  const customActionModalClass = clsx(style.actionModal, isActiveModal && style.active);
+  const [isModal, setIsModal] = useState(false);
+  const customActionModalClass = clsx(style.actionModal, isModal && style.active);
 
-  function handleActionBtnClick() {
-    setIsActiveModal(!isActiveModal);
+  function toggleModal() {
+    setIsModal(!isModal);
   }
 
   return (
@@ -27,31 +25,9 @@ function FlashCard({ question, answer, area, progress }) {
         <div className={style.areaContainer}>
           <p className={style.area}>{area}</p>
         </div>
-        <div className={style.progressContainer}>
-          {isMasterCard ? (
-            <div className={style.masterCard}>
-              <BrainIcon className={style.icon} />
-              <p className={style.text}>Mastercard</p>
-              <span className={style.progressData}>
-                {progress}/{MAX_PROGRESS_FOR_CARD}
-              </span>
-            </div>
-          ) : (
-            <>
-              <div className={style.progressBar}>
-                <span
-                  className={style.filler}
-                  style={{ width: `${(progress * 100) / MAX_PROGRESS_FOR_CARD}%` }}
-                ></span>
-              </div>
-              <span className={style.progressData}>
-                {progress}/{MAX_PROGRESS_FOR_CARD}
-              </span>
-            </>
-          )}
-        </div>
+        <ProgressBar progress={progress} />
         <div className={style.btnContainer}>
-          <button className={style.actionsBtn} onClick={handleActionBtnClick}>
+          <button className={style.actionsBtn} onClick={toggleModal}>
             <MoreIcon className={style.icon} />
           </button>
           <ul className={customActionModalClass}>

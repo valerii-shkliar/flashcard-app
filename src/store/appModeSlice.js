@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { STUDY_MODE } from '../constants/data';
+import { MODE } from '../constants/data';
 
 const initialState = {
-  activeMode: STUDY_MODE,
+  activeMode: MODE.STUDY,
 };
 
 const appModeSlice = createSlice({
