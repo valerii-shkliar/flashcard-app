@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { getVisibleCards, saveCards } from '../../../store/flashCardsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Settings from '../../tools/Settings/Settings';
+import FormCard from '../../tools/FormCard/FormCard';
 
 function CardsSection() {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ function CardsSection() {
 
   return (
     <section className={style.cardsSection}>
+      <FormCard />
       <Settings />
       <div className={style.flashCardsList}>
         {cardsList.map((card) => {

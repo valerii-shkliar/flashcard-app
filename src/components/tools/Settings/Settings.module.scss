@@ -27,24 +27,6 @@
     }
   }
   .filterBtn {
-    @include flex_verticalAlign(center);
-    @include text-preset-4-medium;
-    gap: var(--spacing-100);
-    padding: var(--spacing-150) var(--spacing-200);
-    border-radius: var(--radius-full);
-    border: var(--border-flash-card);
-    background: var(--color-neutral-0);
-    transition: var(--transition);
-
-    &:hover {
-      background: var(--color-neutral-100);
-    }
-    &:focus {
-      box-shadow:
-        0 0 0 2px var(--color-neutral-0),
-        0 0 0 4px var(--color-blue-600);
-    }
-
     .icon {
       width: 16px;
       height: 16px;

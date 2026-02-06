@@ -14,6 +14,9 @@ const flashCardsSlice = createSlice({
     saveCards: (state, { payload }) => {
       state.cards = payload;
     },
+    createCard: (state, { payload }) => {
+      state.cards.unshift(payload);
+    },
     filterCards: (state, { payload }) => {
       if (state.filteredAreas.includes(payload)) {
         const indexArea = state.filteredAreas.indexOf(payload);
@@ -29,7 +32,7 @@ const flashCardsSlice = createSlice({
   },
 });
 
-export const { saveCards, filterCards, hideMastered } = flashCardsSlice.actions;
+export const { saveCards, filterCards, hideMastered, createCard } = flashCardsSlice.actions;
 export default flashCardsSlice.reducer;
 
 export const isCheckedArea = function (area) {

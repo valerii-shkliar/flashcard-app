@@ -1,0 +1,16 @@
+@use '../../../global-styles/setup-style' as *;
+
+.cardForm {
+  background: var(--color-neutral-0);
+  padding: var(--spacing-400);
+  border-radius: var(--radius-16);
+  border: var(--border-flash-card);
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+  margin-bottom: var(--spacing-600);
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+}

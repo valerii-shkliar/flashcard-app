@@ -19,6 +19,12 @@ export const areas = [
   'Web Development',
 ];
 
+export const BTN_TYPES = {
+  PRIMARY: 'primary',
+  SECONDARY: 'secondary',
+  THIRDLY: 'thirdly',
+};
+
 export const cards = [
   {
     question: 'What does HTML stand for?',
@@ -54,13 +60,6 @@ export const cards = [
       'A closure is a function that has access to variables in its outer (enclosing) lexical scope, even after the outer function has returned.',
     area: 'JavaScript',
     progress: 1,
-    id: uuidv4(),
-  },
-  {
-    question: 'What does DOM stand for?',
-    answer: 'Document Object Model',
-    area: 'Web Development',
-    progress: 3,
     id: uuidv4(),
   },
   {

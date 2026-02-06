@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from 'react';
 import ShuffleIcon from '../../../assets/icons/shuffle.svg?react';
 import ArrowIcon from '../../../assets/icons/arrow-down.svg?react';
 import CheckBox from '../../tools/CheckBox/CheckBox';
-import { areas } from '../../../constants/data';
+import { areas, BTN_TYPES } from '../../../constants/data';
 import AreaItem from './AreaItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideMastered, isMasteredHide } from '../../../store/flashCardsSlice';
+import Button from '../Button/Button';
 
 function Settings() {
   const [isActiveModal, setIsActiveModal] = useState(false);
@@ -48,10 +49,16 @@ function Settings() {
   return (
     <div className={style.settingsContainer}>
       <div className={style.filterContainer}>
-        <button className={style.filterBtn} onClick={handleFilterBtnClick} ref={filterBtnRef}>
+        <Button
+          type="button"
+          kind={BTN_TYPES.THIRDLY}
+          className={style.filterBtn}
+          onClick={handleFilterBtnClick}
+          ref={filterBtnRef}
+        >
           All Categories
           <ArrowIcon className={style.icon} />
-        </button>
+        </Button>
         <ul className={customActionModalClass} ref={modalRef}>
           {areas.map((area) => (
             <AreaItem key={area} area={area} />
@@ -64,10 +71,10 @@ function Settings() {
           </label>
         </div>
       </div>
-      <button className={style.filterBtn}>
+      <Button className={style.filterBtn} type="button" kind={BTN_TYPES.THIRDLY}>
         <ShuffleIcon className={style.icon} />
         Shuffle
-      </button>
+      </Button>
     </div>
   );
 }
