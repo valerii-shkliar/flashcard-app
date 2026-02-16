@@ -1,17 +1,16 @@
-import Button from '../Button/Button';
 import InputField from '../InputField/InputField';
 import style from './FormCard.module.scss';
-import PlusIcon from '../../../assets/icons/plus.svg?react';
-import { BTN_TYPES } from '../../../constants/data';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { createCard } from '../../../store/flashCardsSlice';
+import { createCard, updateCard } from '../../../store/flashCardsSlice';
 import { v4 as uuidv4 } from 'uuid';
 import firstStrToUpperCase from '../../../utilities/firstStrToUpperCase';
 import { areas } from '../../../constants/data';
 import { useEffect } from 'react';
+import clsx from 'clsx';
 
-function FormCard() {
+function FormCard({ className, children, currentValues, id, handleEditSubmit }) {
+  const formCustomClass = clsx(style.cardForm, className);
   const dispatch = useDispatch();
   const {
     register,
@@ -27,14 +26,29 @@ function FormCard() {
       areas.push(area);
     }
 
-    const newCard = {
-      question: firstStrToUpperCase(data.question),
-      answer: data.answer,
-      area,
-      progress: 0,
-      id: uuidv4(),
-    };
-    dispatch(createCard(newCard));
+    if (id) {
+      const card = {
+        question:
+          data.question === currentValues.question
+            ? currentValues.question
+            : firstStrToUpperCase(data.question),
+        answer: data.answer === currentValues.answer ? currentValues.answer : data.answer,
+        area: data.area === currentValues.area ? currentValues.area : area,
+        id,
+      };
+
+      dispatch(updateCard(card));
+      handleEditSubmit();
+    } else {
+      const card = {
+        question: firstStrToUpperCase(data.question),
+        answer: data.answer,
+        area,
+        progress: 0,
+        id: uuidv4(),
+      };
+      dispatch(createCard(card));
+    }
   }
 
   useEffect(() => {
@@ -42,30 +56,30 @@ function FormCard() {
   }, [isSubmitSuccessful, reset]);
 
   return (
-    <form className={style.cardForm} onSubmit={handleSubmit(handleFormSubmit)}>
+    <form className={formCustomClass} onSubmit={handleSubmit(handleFormSubmit)}>
       <InputField
         label="Question"
-        placeholder="e.g., What is the capital of France?"
         register={register}
         error={errors.question}
+        defaultValue={currentValues?.question}
+        placeholder="e.g., What is the capital of France?"
       />
       <InputField
         label="Answer"
-        placeholder="e.g., Paris"
         isTextarea={true}
         register={register}
         error={errors.answer}
+        defaultValue={currentValues?.answer}
+        placeholder="e.g., Paris"
       />
       <InputField
         label="Category"
-        placeholder="e.g., Geography"
         register={register}
         error={errors.category}
+        defaultValue={currentValues?.area}
+        placeholder="e.g., Geography"
       />
-      <Button type="submit" kind={BTN_TYPES.PRIMARY}>
-        <PlusIcon className={style.icon} />
-        Create Card
-      </Button>
+      {children}
     </form>
   );
 }

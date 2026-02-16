@@ -1,7 +1,7 @@
 import style from './InputField.module.scss';
 import InputError from './../../../assets/icons/input-error.svg?react';
 
-function InputField({ label, placeholder, isTextarea, register, error }) {
+function InputField({ label, placeholder, isTextarea, register, error, defaultValue }) {
   const name = label.toLowerCase();
   const registerOrName = register
     ? { ...register(name, { required: `Please enter a ${name}.` }) }
@@ -19,6 +19,7 @@ function InputField({ label, placeholder, isTextarea, register, error }) {
           id={name}
           {...registerOrName}
           aria-invalid={error ? 'true' : 'false'}
+          defaultValue={defaultValue}
         />
       ) : (
         <input
@@ -28,6 +29,7 @@ function InputField({ label, placeholder, isTextarea, register, error }) {
           className={style.input}
           id={name}
           aria-invalid={error ? 'true' : 'false'}
+          defaultValue={defaultValue}
         />
       )}
 

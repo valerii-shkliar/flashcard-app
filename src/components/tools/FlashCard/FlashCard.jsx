@@ -5,13 +5,43 @@ import DeleteIcon from '../../../assets/icons/trash.svg?react';
 import { useState } from 'react';
 import clsx from 'clsx';
 import ProgressBar from '../ProgressBar/ProgressBar';
+import { useDispatch } from 'react-redux';
+import { deleteCard } from '../../../store/flashCardsSlice';
+import { MODAL_TYPES } from '../../../constants/data';
+import ModalAction from '../ModalAction/ModalAction';
+import { createPortal } from 'react-dom';
 
-function FlashCard({ question, answer, area, progress }) {
-  const [isModal, setIsModal] = useState(false);
-  const customActionModalClass = clsx(style.actionModal, isModal && style.active);
+function FlashCard({ question, answer, area, progress, id }) {
+  const [isDropdown, setIsDropdown] = useState(false);
+  const [modal, setModal] = useState('');
+  const dispatch = useDispatch();
+  const customActionModalClass = clsx(style.actionModal, isDropdown && style.active);
+  const root = document.getElementById('root');
 
   function toggleModal() {
-    setIsModal(!isModal);
+    setIsDropdown(!isDropdown);
+  }
+
+  function actionDeleteClick() {
+    setModal(MODAL_TYPES.DELETE);
+  }
+
+  function actionEditClick() {
+    setModal(MODAL_TYPES.EDIT);
+  }
+
+  function closeModal() {
+    setModal('');
+    toggleModal();
+  }
+
+  function deleteCardClick() {
+    dispatch(deleteCard(id));
+  }
+
+  function editCardClick() {
+    setModal('');
+    toggleModal();
   }
 
   return (
@@ -32,13 +62,13 @@ function FlashCard({ question, answer, area, progress }) {
           </button>
           <ul className={customActionModalClass}>
             <li className={style.areaItem}>
-              <button className={style.actionBtn}>
+              <button className={style.actionBtn} onClick={actionEditClick}>
                 <EditIcon className={style.icon} />
                 Edit
               </button>
             </li>
             <li className={style.areaItem}>
-              <button className={style.actionBtn}>
+              <button className={style.actionBtn} onClick={actionDeleteClick}>
                 <DeleteIcon className={style.icon} />
                 Delete
               </button>
@@ -46,6 +76,30 @@ function FlashCard({ question, answer, area, progress }) {
           </ul>
         </div>
       </div>
+
+      {modal === MODAL_TYPES.DELETE &&
+        createPortal(
+          <ModalAction
+            id={id}
+            kind={MODAL_TYPES.DELETE}
+            closeModal={closeModal}
+            deleteCardClick={deleteCardClick}
+          />,
+          root,
+        )}
+      {modal === MODAL_TYPES.EDIT &&
+        createPortal(
+          <ModalAction
+            id={id}
+            kind={MODAL_TYPES.EDIT}
+            question={question}
+            answer={answer}
+            area={area}
+            closeModal={closeModal}
+            editCardClick={editCardClick}
+          />,
+          root,
+        )}
     </article>
   );
 }
