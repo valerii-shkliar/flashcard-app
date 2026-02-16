@@ -7,7 +7,7 @@ import CheckBox from '../../tools/CheckBox/CheckBox';
 import { areas, BTN_TYPES } from '../../../constants/data';
 import AreaItem from './AreaItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { hideMastered, isMasteredHide } from '../../../store/flashCardsSlice';
+import { hideMastered, isMasteredHide, shuffleCards } from '../../../store/flashCardsSlice';
 import Button from '../Button/Button';
 
 function Settings() {
@@ -25,6 +25,10 @@ function Settings() {
 
   function handleMasteredCheckBoxChange() {
     dispatch(hideMastered());
+  }
+
+  function handleShuffleClick() {
+    dispatch(shuffleCards());
   }
 
   useEffect(() => {
@@ -71,7 +75,12 @@ function Settings() {
           </label>
         </div>
       </div>
-      <Button className={style.filterBtn} type="button" kind={BTN_TYPES.THIRDLY}>
+      <Button
+        className={style.filterBtn}
+        type="button"
+        kind={BTN_TYPES.THIRDLY}
+        onClick={handleShuffleClick}
+      >
         <ShuffleIcon className={style.icon} />
         Shuffle
       </Button>

@@ -49,11 +49,28 @@ const flashCardsSlice = createSlice({
     hideMastered: (state) => {
       state.isMasteredHide = !state.isMasteredHide;
     },
+
+    shuffleCards: (state) => {
+      const arr = state.cards;
+
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+    },
   },
 });
 
-export const { saveCards, filterCards, hideMastered, createCard, deleteCard, updateCard } =
-  flashCardsSlice.actions;
+export const {
+  saveCards,
+  filterCards,
+  hideMastered,
+  createCard,
+  deleteCard,
+  updateCard,
+  shuffleCards,
+} = flashCardsSlice.actions;
 export default flashCardsSlice.reducer;
 
 export const isCheckedArea = function (area) {

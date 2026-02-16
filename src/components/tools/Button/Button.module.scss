@@ -18,7 +18,7 @@
   }
 
   &.primary,
-  .secondary {
+  &.secondary {
     @include text-preset-4-medium;
     box-shadow: 2px 2px 0 0 var(--color-neutral-900);
 
@@ -32,6 +32,10 @@
         box-shadow: 3px 3px 0 0 var(--color-blue-600);
       }
     }
+    &:hover {
+      box-shadow: 4px 4px 0 0 var(--color-neutral-900);
+    }
+
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;

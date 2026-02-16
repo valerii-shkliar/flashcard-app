@@ -1,5 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
+export const amountCardsOnPage = 12;
+
 export const MAX_PROGRESS_FOR_CARD = 5;
 export const MODE = {
   STUDY: 'study',
