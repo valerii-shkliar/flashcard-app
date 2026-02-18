@@ -90,57 +90,46 @@ function FlashCard({ question, answer, area, progress, id }) {
         </div>
       </div>
 
-      {modal === MODAL_TYPES.DELETE && (
-        <ModalAction closeModal={closeModal}>
-          <div className={style.deleteContainer}>
-            <div className={style.contentContainer}>
-              <h2 className={style.title}>Delete this card?</h2>
-              <p className={style.text}>This action can’t be undone.</p>
-            </div>
+      <ModalAction isOpen={modal === MODAL_TYPES.DELETE} closeModal={closeModal}>
+        <div className={style.deleteContainer}>
+          <div className={style.contentContainer}>
+            <h2 className={style.title}>Delete this card?</h2>
+            <p className={style.text}>This action can’t be undone.</p>
+          </div>
+          <div className={style.btnContainer}>
+            <Button kind={BTN_TYPES.THIRDLY} onClick={handleCloseModalClick}>
+              Cancel
+            </Button>
+            <Button kind={BTN_TYPES.PRIMARY} onClick={handleDeleteClick}>
+              Delete Card
+            </Button>
+          </div>
+        </div>
+      </ModalAction>
+      <ModalAction isOpen={modal === MODAL_TYPES.EDIT} closeModal={closeModal}>
+        <div className={style.editContainer}>
+          <button className={style.closeBtn} onClick={handleCloseModalClick}>
+            <CloseIcon className={style.icon} />
+          </button>
+          <h2 className={style.title}>Edit your card</h2>
+          <FormCard
+            className={style.editForm}
+            currentValues={{
+              question,
+              answer,
+              area,
+            }}
+            id={id}
+            handleEditSubmit={handleEditClick}
+          >
             <div className={style.btnContainer}>
-              <Button kind={BTN_TYPES.THIRDLY} onClick={handleCloseModalClick}>
-                Cancel
-              </Button>
-              <Button kind={BTN_TYPES.PRIMARY} onClick={handleDeleteClick}>
-                Delete Card
+              <Button kind={BTN_TYPES.PRIMARY} type="submit">
+                Update Card
               </Button>
             </div>
-          </div>
-        </ModalAction>
-      )}
-      {modal === MODAL_TYPES.EDIT && (
-        <ModalAction
-          id={id}
-          kind={MODAL_TYPES.EDIT}
-          question={question}
-          answer={answer}
-          area={area}
-          closeModal={closeModal}
-        >
-          <div className={style.editContainer}>
-            <button className={style.closeBtn} onClick={handleCloseModalClick}>
-              <CloseIcon className={style.icon} />
-            </button>
-            <h2 className={style.title}>Edit your card</h2>
-            <FormCard
-              className={style.editForm}
-              currentValues={{
-                question,
-                answer,
-                area,
-              }}
-              id={id}
-              handleEditSubmit={handleEditClick}
-            >
-              <div className={style.btnContainer}>
-                <Button kind={BTN_TYPES.PRIMARY} type="submit">
-                  Update Card
-                </Button>
-              </div>
-            </FormCard>
-          </div>
-        </ModalAction>
-      )}
+          </FormCard>
+        </div>
+      </ModalAction>
     </article>
   );
 }
