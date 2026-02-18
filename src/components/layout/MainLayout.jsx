@@ -4,6 +4,7 @@ import Header from '../sections/Header/Header';
 import FeatureWrapper from './FeatureWrapper';
 import { getActiveMode } from '../../store/appModeSlice';
 import { MODE } from '../../constants/data';
+import StudySection from '../sections/StudySection/StudySection';
 
 function MainLayout() {
   const appMode = useSelector(getActiveMode);
@@ -12,7 +13,7 @@ function MainLayout() {
     <FeatureWrapper>
       <Header />
       <main>
-        {appMode === MODE.STUDY && null}
+        {appMode === MODE.STUDY && <StudySection />}
         {appMode === MODE.CARDS && <CardsSection />}
       </main>
     </FeatureWrapper>

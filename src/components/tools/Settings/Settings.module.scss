@@ -2,7 +2,6 @@
 
 .settingsContainer {
   @include flex_BothAlign(space-between, center);
-  margin-bottom: var(--spacing-400);
 
   .filterContainer {
     @include flex_verticalAlign(center);

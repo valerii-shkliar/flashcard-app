@@ -5,7 +5,9 @@
     width: 16px;
     height: 16px;
   }
-
+  .settings {
+    margin-bottom: var(--spacing-400);
+  }
   .flashCardsList {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

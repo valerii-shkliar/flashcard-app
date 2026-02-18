@@ -35,7 +35,7 @@ function CardsSection() {
           Create Card
         </Button>
       </FormCard>
-      {isCards || isFiltered ? <Settings /> : null}
+      {isCards || isFiltered ? <Settings className={style.settings} /> : null}
       <div className={style.flashCardsList} style={{ ...(!isCards && { display: 'block' }) }}>
         {cardsList ? (
           renderedCardsList.map((card) => {

@@ -1,0 +1,34 @@
+@use '../../../global-styles/setup-style' as *;
+
+.questionDesk {
+  @include flex_verticalAlign(center);
+  flex-direction: column;
+  border: var(--border-flash-card);
+  border-width: 2px;
+  box-shadow: 2px 2px 0 0 var(--color-neutral-900);
+  background-color: var(--color-pink-400);
+  background-image: url('../../../assets/images/grid-background.png');
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: var(--radius-16);
+  padding: var(--spacing-300);
+  margin: var(--spacing-250);
+  cursor: pointer;
+
+  .area {
+    @include btn_like_box;
+    text-wrap-mode: nowrap;
+    background: var(--color-neutral-0);
+    margin-bottom: var(--spacing-1200);
+  }
+  .question {
+    @include text-preset-1;
+    margin-bottom: var(--spacing-200);
+  }
+  .prompt {
+    @include text-preset-4-medium;
+    opacity: 0.8;
+    margin-bottom: var(--spacing-1200);
+  }
+}

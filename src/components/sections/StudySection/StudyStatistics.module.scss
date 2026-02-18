@@ -1,0 +1,31 @@
+@use '../../../global-styles/setup-style' as *;
+
+.studyStatistics {
+  border-bottom: 3px solid var(--color-neutral-900);
+  border-left: 1px solid var(--color-neutral-900);
+  border-right: 3px solid var(--color-neutral-900);
+  border-top: 1px solid var(--color-neutral-900);
+  border-radius: var(--radius-16);
+  background: var(--color-neutral-0);
+  width: 35%;
+  padding: var(--spacing-250);
+
+  .statisticsTitle {
+    @include text-preset-2;
+    margin-bottom: var(--spacing-200);
+  }
+  .statisticsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-250);
+  }
+
+  @media (max-width: 1100px) {
+    width: 100%;
+
+    .statisticsContainer {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+}

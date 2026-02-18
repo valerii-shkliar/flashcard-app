@@ -10,12 +10,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { hideMastered, isMasteredHide, shuffleCards } from '../../../store/flashCardsSlice';
 import Button from '../Button/Button';
 
-function Settings() {
+function Settings({ className }) {
   const [isActiveModal, setIsActiveModal] = useState(false);
   const dispatch = useDispatch();
   const isHide = useSelector(isMasteredHide);
   const isActiveModalRef = useRef(isActiveModal);
   const customActionModalClass = clsx(style.actionModal, isActiveModal && style.active);
+  const customSettingsClass = clsx(style.settingsContainer, className);
   const filterBtnRef = useRef(null);
   const modalRef = useRef(null);
 
@@ -51,7 +52,7 @@ function Settings() {
   }, []);
 
   return (
-    <div className={style.settingsContainer}>
+    <div className={customSettingsClass}>
       <div className={style.filterContainer}>
         <Button
           type="button"
