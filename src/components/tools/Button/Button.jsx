@@ -1,15 +1,8 @@
 import clsx from 'clsx';
 import style from './Button.module.scss';
-import { BTN_TYPES } from '../../../constants/data';
 
 function Button({ children, type = 'button', kind, onClick, isDisabled, className, ref }) {
-  const btnCustomClass = clsx(
-    style.btn,
-    className,
-    kind === BTN_TYPES.PRIMARY && style.primary,
-    kind === BTN_TYPES.SECONDARY && style.secondary,
-    kind === BTN_TYPES.THIRDLY && style.thirdly,
-  );
+  const btnCustomClass = clsx(style.btn, className, style[kind]);
 
   return (
     <button

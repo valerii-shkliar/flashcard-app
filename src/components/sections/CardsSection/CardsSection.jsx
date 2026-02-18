@@ -8,6 +8,7 @@ import Settings from '../../tools/Settings/Settings';
 import FormCard from '../../tools/FormCard/FormCard';
 import Button from '../../tools/Button/Button';
 import PlusIcon from '../../../assets/icons/plus.svg?react';
+import EmptyList from '../../tools/EmptyList/EmptyList';
 
 function CardsSection() {
   const [amountCards, setAmountCards] = useState(amountCardsOnPage);
@@ -16,6 +17,7 @@ function CardsSection() {
   const renderedCardsList = cardsList.slice(0, amountCards);
   const isFiltered = useSelector(isFilteredSelector);
   const isCards = cardsList.length !== 0;
+  const canLoadMore = renderedCardsList.length !== cardsList.length;
 
   function handleLoadClick() {
     setAmountCards(amountCards + amountCardsOnPage);
@@ -37,7 +39,7 @@ function CardsSection() {
       </FormCard>
       {isCards || isFiltered ? <Settings /> : null}
       <div className={style.flashCardsList} style={{ ...(!isCards && { display: 'block' }) }}>
-        {cardsList ? (
+        {cardsList && isCards ? (
           renderedCardsList.map((card) => {
             return (
               <FlashCard
@@ -51,15 +53,10 @@ function CardsSection() {
             );
           })
         ) : (
-          <div className={style.emptyContainer}>
-            <h2 className={style.title}>No cards yet</h2>
-            <p className={style.text}>
-              Add your first card using the form above and it will show up here.
-            </p>
-          </div>
+          <EmptyList />
         )}
       </div>
-      {renderedCardsList.length !== cardsList.length && (
+      {canLoadMore && (
         <Button kind="secondary" onClick={handleLoadClick} className={style.loadBtn}>
           Load More
         </Button>
