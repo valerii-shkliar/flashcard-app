@@ -14,6 +14,29 @@ const flashCardsSlice = createSlice({
     saveCards: (state, { payload }) => {
       state.cards = payload;
     },
+    createCard: (state, { payload }) => {
+      state.cards.unshift(payload);
+    },
+
+    updateCard: (state, { payload }) => {
+      return {
+        ...state,
+        cards: state.cards.map((card) => {
+          if (payload.id === card.id) {
+            return {
+              ...card,
+              ...payload,
+            };
+          }
+          return card;
+        }),
+      };
+    },
+    deleteCard: (state, { payload }) => {
+      state.cards = state.cards.filter((card) => {
+        return card.id !== payload;
+      });
+    },
     filterCards: (state, { payload }) => {
       if (state.filteredAreas.includes(payload)) {
         const indexArea = state.filteredAreas.indexOf(payload);
@@ -26,10 +49,28 @@ const flashCardsSlice = createSlice({
     hideMastered: (state) => {
       state.isMasteredHide = !state.isMasteredHide;
     },
+
+    shuffleCards: (state) => {
+      const arr = state.cards;
+
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+    },
   },
 });
 
-export const { saveCards, filterCards, hideMastered } = flashCardsSlice.actions;
+export const {
+  saveCards,
+  filterCards,
+  hideMastered,
+  createCard,
+  deleteCard,
+  updateCard,
+  shuffleCards,
+} = flashCardsSlice.actions;
 export default flashCardsSlice.reducer;
 
 export const isCheckedArea = function (area) {
@@ -39,6 +80,9 @@ export const isCheckedArea = function (area) {
 };
 export const isMasteredHide = function (state) {
   return state.flashCards.isMasteredHide;
+};
+export const isFilteredSelector = function (state) {
+  return state.flashCards.filteredAreas.length > 0 || state.flashCards.isMasteredHide;
 };
 
 export const getVisibleCards = createSelector(

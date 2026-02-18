@@ -1,0 +1,52 @@
+@use '../../../global-styles/setup-style' as *;
+
+.inputContainer {
+  margin-bottom: var(--spacing-200);
+
+  .label {
+    @include text-preset-4-medium;
+    display: inline-block;
+    color: var(--color-neutral-900);
+    margin-bottom: var(--spacing-100);
+  }
+  .input,
+  .textarea {
+    @include text-preset-4-regular;
+    padding: var(--spacing-200);
+    color: var(--color-neutral-900);
+    border-radius: var(--radius-6);
+    border: var(--border-flash-card);
+    width: 100%;
+
+    &::placeholder {
+      color: var(--color-neutral-600);
+    }
+
+    &:focus {
+      border-color: var(--color-blue-600);
+      box-shadow: 2px 2px 0 0 var(--color-blue-600);
+    }
+    &[aria-invalid='true'] {
+      border-color: var(--color-pink-700);
+      box-shadow: 2px 2px 0 0 var(--color-pink-700);
+    }
+  }
+  .textarea {
+    resize: none;
+    height: 100px;
+  }
+
+  .error {
+    @include text-preset-5-regular;
+    color: var(--color-pink-700);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-75);
+    padding-top: var(--spacing-100);
+
+    .icon {
+      width: 14px;
+      height: 15px;
+    }
+  }
+}
