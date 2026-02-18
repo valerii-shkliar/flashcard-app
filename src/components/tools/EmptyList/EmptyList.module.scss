@@ -1,0 +1,18 @@
+@use '../../../global-styles/setup-style' as *;
+
+.emptyList {
+  padding-top: 4.875rem;
+  padding-bottom: 5.875rem;
+
+  .title {
+    @include text-preset-2;
+    color: var(--color-neutral-900);
+    margin-bottom: var(--spacing-125);
+    text-align: center;
+  }
+  .text {
+    @include text-preset-4-regular;
+    color: var(--color-neutral-900);
+    text-align: center;
+  }
+}

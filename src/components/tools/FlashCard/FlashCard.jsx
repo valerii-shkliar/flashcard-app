@@ -7,16 +7,17 @@ import clsx from 'clsx';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import { useDispatch } from 'react-redux';
 import { deleteCard } from '../../../store/flashCardsSlice';
-import { MODAL_TYPES } from '../../../constants/data';
+import { BTN_TYPES, MODAL_TYPES } from '../../../constants/data';
 import ModalAction from '../ModalAction/ModalAction';
-import { createPortal } from 'react-dom';
+import Button from '../Button/Button';
+import FormCard from '../FormCard/FormCard';
+import CloseIcon from '../../../assets/icons/close.svg?react';
 
 function FlashCard({ question, answer, area, progress, id }) {
   const [isDropdown, setIsDropdown] = useState(false);
   const [modal, setModal] = useState('');
   const dispatch = useDispatch();
   const customActionModalClass = clsx(style.actionModal, isDropdown && style.active);
-  const root = document.getElementById('root');
 
   function toggleModal() {
     setIsDropdown(!isDropdown);
@@ -42,6 +43,18 @@ function FlashCard({ question, answer, area, progress, id }) {
   function editCardClick() {
     setModal('');
     toggleModal();
+  }
+
+  function handleCloseModalClick() {
+    closeModal();
+  }
+
+  function handleDeleteClick() {
+    deleteCardClick();
+  }
+
+  function handleEditClick() {
+    editCardClick();
   }
 
   return (
@@ -77,29 +90,46 @@ function FlashCard({ question, answer, area, progress, id }) {
         </div>
       </div>
 
-      {modal === MODAL_TYPES.DELETE &&
-        createPortal(
-          <ModalAction
+      <ModalAction isOpen={modal === MODAL_TYPES.DELETE} closeModal={closeModal}>
+        <div className={style.deleteContainer}>
+          <div className={style.contentContainer}>
+            <h2 className={style.title}>Delete this card?</h2>
+            <p className={style.text}>This action can’t be undone.</p>
+          </div>
+          <div className={style.btnContainer}>
+            <Button kind={BTN_TYPES.THIRDLY} onClick={handleCloseModalClick}>
+              Cancel
+            </Button>
+            <Button kind={BTN_TYPES.PRIMARY} onClick={handleDeleteClick}>
+              Delete Card
+            </Button>
+          </div>
+        </div>
+      </ModalAction>
+      <ModalAction isOpen={modal === MODAL_TYPES.EDIT} closeModal={closeModal}>
+        <div className={style.editContainer}>
+          <button className={style.closeBtn} onClick={handleCloseModalClick}>
+            <CloseIcon className={style.icon} />
+          </button>
+          <h2 className={style.title}>Edit your card</h2>
+          <FormCard
+            className={style.editForm}
+            currentValues={{
+              question,
+              answer,
+              area,
+            }}
             id={id}
-            kind={MODAL_TYPES.DELETE}
-            closeModal={closeModal}
-            deleteCardClick={deleteCardClick}
-          />,
-          root,
-        )}
-      {modal === MODAL_TYPES.EDIT &&
-        createPortal(
-          <ModalAction
-            id={id}
-            kind={MODAL_TYPES.EDIT}
-            question={question}
-            answer={answer}
-            area={area}
-            closeModal={closeModal}
-            editCardClick={editCardClick}
-          />,
-          root,
-        )}
+            handleEditSubmit={handleEditClick}
+          >
+            <div className={style.btnContainer}>
+              <Button kind={BTN_TYPES.PRIMARY} type="submit">
+                Update Card
+              </Button>
+            </div>
+          </FormCard>
+        </div>
+      </ModalAction>
     </article>
   );
 }

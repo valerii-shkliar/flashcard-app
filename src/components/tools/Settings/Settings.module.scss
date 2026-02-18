@@ -10,10 +10,11 @@
 
     .actionModal {
       @include drop_down;
-      top: 250%;
+      top: calc(100% + var(--spacing-100));
+      transform: translateY(50%);
 
       &.active {
-        top: 120%;
+        transform: translateY(0px);
       }
     }
   }
