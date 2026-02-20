@@ -1,9 +1,9 @@
 import style from './CardsSection.module.scss';
 import FlashCard from '../../tools/FlashCard/FlashCard';
-import { amountCardsOnPage, BTN_TYPES, cards, MODAL_TYPES } from '../../../constants/data';
-import { useEffect, useState } from 'react';
-import { getVisibleCards, isFilteredSelector, saveCards } from '../../../store/flashCardsSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { amountCardsOnPage, BTN_TYPES } from '../../../constants/data';
+import { useState } from 'react';
+import { getVisibleCards, isFilteredSelector } from '../../../store/flashCardsSlice';
+import { useSelector } from 'react-redux';
 import Settings from '../../tools/Settings/Settings';
 import FormCard from '../../tools/FormCard/FormCard';
 import Button from '../../tools/Button/Button';
@@ -12,7 +12,6 @@ import EmptyList from '../../tools/EmptyList/EmptyList';
 
 function CardsSection() {
   const [amountCards, setAmountCards] = useState(amountCardsOnPage);
-  const dispatch = useDispatch();
   const cardsList = useSelector(getVisibleCards);
   const renderedCardsList = cardsList.slice(0, amountCards);
   const isFiltered = useSelector(isFilteredSelector);
@@ -22,12 +21,6 @@ function CardsSection() {
   function handleLoadClick() {
     setAmountCards(amountCards + amountCardsOnPage);
   }
-
-  useEffect(() => {
-    if (!isCards) {
-      dispatch(saveCards(cards));
-    }
-  }, [dispatch, isCards]);
 
   return (
     <section className={style.cardsSection}>
@@ -53,7 +46,11 @@ function CardsSection() {
             );
           })
         ) : (
-          <EmptyList />
+          <EmptyList
+            title="No cards yet"
+            text="Add your first card using the form above and it will show up here."
+            className={style.emptyList}
+          />
         )}
       </div>
       {canLoadMore && (

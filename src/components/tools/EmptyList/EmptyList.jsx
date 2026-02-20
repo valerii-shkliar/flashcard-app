@@ -1,12 +1,23 @@
+import clsx from 'clsx';
+import { BTN_TYPES } from '../../../constants/data';
+import Button from '../Button/Button';
 import style from './EmptyList.module.scss';
 
-function EmptyList() {
+function EmptyList({ title, text, button, className, btnClick }) {
+  const customEmptyListClass = clsx(style.emptyList, className);
+
   return (
-    <div className={style.emptyList}>
-      <h2 className={style.title}>No cards yet</h2>
-      <p className={style.text}>
-        Add your first card using the form above and it will show up here.
-      </p>
+    <div className={customEmptyListClass}>
+      <h2 className={style.title}>{title}</h2>
+      <p className={style.text}>{text}</p>
+
+      {button && (
+        <div className={style.btnContainer}>
+          <Button kind={BTN_TYPES.SECONDARY} onClick={btnClick}>
+            {button}
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

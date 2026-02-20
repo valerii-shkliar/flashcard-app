@@ -32,8 +32,10 @@
         box-shadow: 3px 3px 0 0 var(--color-blue-600);
       }
     }
-    &:hover {
-      box-shadow: 4px 4px 0 0 var(--color-neutral-900);
+    &:not(:disabled) {
+      &:hover {
+        box-shadow: 4px 4px 0 0 var(--color-neutral-900);
+      }
     }
 
     &:disabled {
@@ -51,10 +53,11 @@
       border-color: var(--color-neutral-900);
       background: var(--color-neutral-100);
     }
-
-    &:hover {
-      border-color: var(--color-neutral-900);
-      background-color: var(--color-neutral-100);
+    &:not(:disabled) {
+      &:hover {
+        border-color: var(--color-neutral-900);
+        background-color: var(--color-neutral-100);
+      }
     }
 
     &:focus {

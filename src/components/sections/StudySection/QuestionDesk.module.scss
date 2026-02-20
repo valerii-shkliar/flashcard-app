@@ -1,34 +1,54 @@
 @use '../../../global-styles/setup-style' as *;
 
 .questionDesk {
-  @include flex_verticalAlign(center);
-  flex-direction: column;
-  border: var(--border-flash-card);
-  border-width: 2px;
-  box-shadow: 2px 2px 0 0 var(--color-neutral-900);
-  background-color: var(--color-pink-400);
-  background-image: url('../../../assets/images/grid-background.png');
-  background-position: top;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: var(--radius-16);
-  padding: var(--spacing-300);
-  margin: var(--spacing-250);
-  cursor: pointer;
+  padding: var(--spacing-250);
 
-  .area {
-    @include btn_like_box;
-    text-wrap-mode: nowrap;
-    background: var(--color-neutral-0);
-    margin-bottom: var(--spacing-1200);
-  }
-  .question {
-    @include text-preset-1;
-    margin-bottom: var(--spacing-200);
-  }
-  .prompt {
-    @include text-preset-4-medium;
-    opacity: 0.8;
-    margin-bottom: var(--spacing-1200);
+  .questionDeskBtn {
+    @include flex_BothAlign(space-between, center);
+    flex-direction: column;
+    height: 360px;
+    border: var(--border-flash-card);
+    border-width: 2px;
+    box-shadow: 2px 2px 0 0 var(--color-neutral-900);
+    background-image: url('../../../assets/images/grid-background.png');
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: var(--radius-16);
+    padding: var(--spacing-300);
+    width: 100%;
+    transition: background-color 0.4s ease;
+
+    &.questionActive {
+      background-color: var(--color-pink-400);
+    }
+    &.answerActive {
+      background-color: var(--color-blue-400);
+    }
+
+    .area {
+      @include btn_like_box;
+      text-wrap-mode: nowrap;
+      background: var(--color-neutral-0);
+    }
+    .questionContainer {
+      .question,
+      .answer {
+        margin-bottom: var(--spacing-200);
+        text-align: center;
+      }
+      .question {
+        @include text-preset-1;
+      }
+      .answer {
+        @include text-preset-2;
+      }
+      .prompt {
+        @include text-preset-4-medium;
+        opacity: 0.8;
+        text-align: center;
+        user-select: none;
+      }
+    }
   }
 }

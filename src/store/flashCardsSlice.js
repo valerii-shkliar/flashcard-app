@@ -73,6 +73,24 @@ export const {
 } = flashCardsSlice.actions;
 export default flashCardsSlice.reducer;
 
+export const getAmountCards = function (state) {
+  return state.flashCards.cards.length;
+};
+
+export const getAmountMasteredCards = function (state) {
+  return state.flashCards.cards.filter((card) => card.progress === MAX_PROGRESS_FOR_CARD).length;
+};
+
+export const getAmountCardsInProgress = function (state) {
+  return state.flashCards.cards.filter(
+    (card) => card.progress > 0 && card.progress < MAX_PROGRESS_FOR_CARD,
+  ).length;
+};
+
+export const getAmountCardsNotStarted = function (state) {
+  return state.flashCards.cards.filter((card) => card.progress === 0).length;
+};
+
 export const isCheckedArea = function (area) {
   return (state) => {
     return state.flashCards.filteredAreas.includes(area);

@@ -4,15 +4,33 @@ import BrainIcon from '../../../assets/icons/brain.svg?react';
 import BookIcon from '../../../assets/icons/book.svg?react';
 import BoxIcon from '../../../assets/icons/box.svg?react';
 import Statistic from '../../tools/Statistic/Statistic';
-
-const statisticsItems = [
-  { title: 'Total Cards', amount: 0, icon: LayersIcon, color: 'color-blue-400' },
-  { title: 'Mastered', amount: 0, icon: BrainIcon, color: 'color-teal-400' },
-  { title: 'In Progress', amount: 0, icon: BookIcon, color: 'color-pink-500' },
-  { title: 'Not Started', amount: 0, icon: BoxIcon, color: 'color-pink-400' },
-];
+import { memo } from 'react';
+import { useSelector } from 'react-redux';
+import {
+  getAmountCards,
+  getAmountCardsInProgress,
+  getAmountCardsNotStarted,
+  getAmountMasteredCards,
+} from '../../../store/flashCardsSlice';
 
 function StudyStatistics() {
+  const amountAllCards = useSelector(getAmountCards);
+  const amountMasteredCards = useSelector(getAmountMasteredCards);
+  const amountCardsInProgress = useSelector(getAmountCardsInProgress);
+  const amountNotStartedCards = useSelector(getAmountCardsNotStarted);
+
+  const statisticsItems = [
+    { title: 'Total Cards', amount: amountAllCards, icon: LayersIcon, color: 'color-blue-400' },
+    { title: 'Mastered', amount: amountMasteredCards, icon: BrainIcon, color: 'color-teal-400' },
+    {
+      title: 'In Progress',
+      amount: amountCardsInProgress,
+      icon: BookIcon,
+      color: 'color-pink-500',
+    },
+    { title: 'Not Started', amount: amountNotStartedCards, icon: BoxIcon, color: 'color-pink-400' },
+  ];
+
   return (
     <div className={style.studyStatistics}>
       <h2 className={style.statisticsTitle}>Study Statistics</h2>
@@ -32,4 +50,4 @@ function StudyStatistics() {
     </div>
   );
 }
-export default StudyStatistics;
+export default memo(StudyStatistics);

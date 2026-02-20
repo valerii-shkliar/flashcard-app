@@ -1,9 +1,6 @@
 @use '../../../global-styles/setup-style' as *;
 
 .emptyList {
-  padding-top: 4.875rem;
-  padding-bottom: 5.875rem;
-
   .title {
     @include text-preset-2;
     color: var(--color-neutral-900);
@@ -14,5 +11,9 @@
     @include text-preset-4-regular;
     color: var(--color-neutral-900);
     text-align: center;
+    margin-bottom: var(--spacing-400);
+  }
+  .btnContainer {
+    @include flex_horizonAlign(center);
   }
 }

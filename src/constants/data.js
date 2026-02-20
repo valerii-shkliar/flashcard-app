@@ -31,6 +31,7 @@ export const MODAL_TYPES = {
   DELETE: 'delete',
   EDIT: 'edit',
 };
+// export const cards = [];
 
 export const cards = [
   {

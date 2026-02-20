@@ -12,10 +12,20 @@
     border-top: 1px solid var(--color-neutral-900);
     border-radius: var(--radius-16);
     background: var(--color-neutral-0);
+    display: flex;
+    flex-direction: column;
 
     .settings {
       padding: var(--spacing-250);
       border-bottom: var(--border-flash-card);
+    }
+
+    .emptyList {
+      flex-basis: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--spacing-300);
     }
     .manageBtnsContainer {
       @include flex_horizonAlign(center);
