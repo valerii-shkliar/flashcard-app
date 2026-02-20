@@ -1,0 +1,44 @@
+@use '../../../global-styles/setup-style' as *;
+
+.toast {
+  @include flex_BothAlign(space-between, center);
+  border: var(--border-flash-card);
+  border-radius: var(--radius-full);
+  box-shadow: 2px 2px 0 0 var(--color-neutral-900);
+  background: var(--color-neutral-0);
+  padding: var(--spacing-125) var(--spacing-200);
+  min-width: 300px;
+  opacity: 0;
+  position: fixed;
+  z-index: 100;
+  right: 0;
+  top: 12%;
+  transition: all 0.4s;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-75%);
+
+    @media (max-width: 550px) {
+      transform: translateX(-20%);
+    }
+  }
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(0);
+  }
+  .message {
+    @include text-preset-4-medium;
+  }
+  .btn {
+    @include flex_center;
+
+    .icon {
+      path {
+        fill: var(--color-neutral-600);
+      }
+    }
+  }
+}

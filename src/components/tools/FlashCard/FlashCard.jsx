@@ -13,7 +13,7 @@ import Button from '../Button/Button';
 import FormCard from '../FormCard/FormCard';
 import CloseIcon from '../../../assets/icons/close.svg?react';
 
-function FlashCard({ question, answer, area, progress, id }) {
+function FlashCard({ question, answer, area, progress, id, triggerToast }) {
   const [isDropdown, setIsDropdown] = useState(false);
   const [modal, setModal] = useState('');
   const dispatch = useDispatch();
@@ -51,10 +51,14 @@ function FlashCard({ question, answer, area, progress, id }) {
 
   function handleDeleteClick() {
     deleteCardClick();
+
+    triggerToast('deleted');
   }
 
   function handleEditClick() {
     editCardClick();
+
+    triggerToast('updated');
   }
 
   return (
@@ -89,7 +93,6 @@ function FlashCard({ question, answer, area, progress, id }) {
           </ul>
         </div>
       </div>
-
       <ModalAction isOpen={modal === MODAL_TYPES.DELETE} closeModal={closeModal}>
         <div className={style.deleteContainer}>
           <div className={style.contentContainer}>

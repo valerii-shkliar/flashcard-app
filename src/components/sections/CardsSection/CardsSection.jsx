@@ -9,9 +9,12 @@ import FormCard from '../../tools/FormCard/FormCard';
 import Button from '../../tools/Button/Button';
 import PlusIcon from '../../../assets/icons/plus.svg?react';
 import EmptyList from '../../tools/EmptyList/EmptyList';
+import Toast from '../../tools/Toast/Toast';
 
 function CardsSection() {
   const [amountCards, setAmountCards] = useState(amountCardsOnPage);
+  const [toastMessage, setToastMessage] = useState('');
+
   const cardsList = useSelector(getVisibleCards);
   const renderedCardsList = cardsList.slice(0, amountCards);
   const isFiltered = useSelector(isFilteredSelector);
@@ -22,9 +25,14 @@ function CardsSection() {
     setAmountCards(amountCards + amountCardsOnPage);
   }
 
+  function triggerToast(message) {
+    setToastMessage(message);
+  }
+
   return (
     <section className={style.cardsSection}>
-      <FormCard>
+      <Toast message={toastMessage} onClose={() => setToastMessage('')} />
+      <FormCard triggerToast={triggerToast}>
         <Button type="submit" kind={BTN_TYPES.PRIMARY}>
           <PlusIcon className={style.icon} />
           Create Card
@@ -42,6 +50,7 @@ function CardsSection() {
                 answer={card.answer}
                 area={card.area}
                 progress={card.progress}
+                triggerToast={triggerToast}
               />
             );
           })

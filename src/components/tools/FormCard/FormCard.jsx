@@ -9,7 +9,7 @@ import { areas } from '../../../constants/data';
 import { useEffect } from 'react';
 import clsx from 'clsx';
 
-function FormCard({ className, children, currentValues, id, handleEditSubmit }) {
+function FormCard({ className, children, currentValues, id, handleEditSubmit, triggerToast }) {
   const formCustomClass = clsx(style.cardForm, className);
   const dispatch = useDispatch();
   const {
@@ -48,6 +48,7 @@ function FormCard({ className, children, currentValues, id, handleEditSubmit }) 
         id: uuidv4(),
       };
       dispatch(createCard(card));
+      triggerToast('created');
     }
   }
 

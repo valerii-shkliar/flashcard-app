@@ -9,6 +9,7 @@
   border-right-width: 3px;
   background: var(--color-neutral-0);
   color: var(--color-neutral-900);
+  min-width: 320px;
 
   .question {
     @include text-preset-3;
@@ -36,6 +37,10 @@
     .areaContainer,
     .btnContainer {
       padding: var(--spacing-200);
+
+      @media (max-width: 410px) {
+        padding: var(--spacing-100);
+      }
     }
 
     .areaContainer {
@@ -44,11 +49,13 @@
 
       .area {
         @include btn_like_box;
-        text-wrap-mode: nowrap;
+        text-wrap: auto;
+        text-align: center;
       }
     }
 
     .btnContainer {
+      @include flex_verticalAlign(center);
       border-left: var(--border-flash-card);
       padding-left: var(--spacing-100);
       margin-left: auto;
