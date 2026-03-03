@@ -1,0 +1,22 @@
+@use '../../../global-styles/setup-style' as *;
+
+.switcherContainer {
+  padding: var(--spacing-50);
+  border: 1px solid var(--color-neutral-900);
+  border-radius: var(--radius-full);
+  box-shadow: 1px 2px 0 0 var(--color-neutral-900);
+  background: var(--color-neutral-0);
+  text-wrap-mode: nowrap;
+  display: flex;
+  gap: var(--spacing-125);
+
+  .switcher {
+    background: var(--color-neutral-0);
+    border-color: transparent;
+
+    &.active {
+      border-color: var(--color-neutral-900);
+      background: var(--color-yellow-500);
+    }
+  }
+}

@@ -1,0 +1,37 @@
+@use '../../../global-styles/setup-style' as *;
+
+.statistic {
+  display: flex;
+  border-bottom: 2px solid var(--color-neutral-900);
+  border-left: 1px solid var(--color-neutral-900);
+  border-right: 2px solid var(--color-neutral-900);
+  border-top: 1px solid var(--color-neutral-900);
+  border-radius: var(--radius-12);
+
+  .contentContainer {
+    border-right: var(--border-flash-card);
+    padding: var(--spacing-200) var(--spacing-250);
+    width: 100%;
+    @include flex_horizonAlign(space-between);
+    flex-direction: column;
+
+    .title {
+      @include text-preset-4-medium;
+    }
+    .amount {
+      @include text-preset-1;
+    }
+  }
+  .iconContainer {
+    padding: var(--spacing-600) var(--spacing-500);
+    border-bottom-right-radius: var(--radius-12);
+    border-top-right-radius: var(--radius-12);
+  }
+
+  @media (max-width: 1100px) {
+    width: calc(100% / 2 - var(--spacing-250) / 2);
+  }
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+}

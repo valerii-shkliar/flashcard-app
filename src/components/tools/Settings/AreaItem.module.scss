@@ -1,0 +1,9 @@
+@use '../../../global-styles/setup-style' as *;
+
+.areaItem {
+  @include area_item;
+
+  .actionBtn {
+    border-radius: initial;
+  }
+}

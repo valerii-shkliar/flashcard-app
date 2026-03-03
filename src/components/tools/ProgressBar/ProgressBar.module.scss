@@ -1,0 +1,49 @@
+@use '../../../global-styles/setup-style' as *;
+
+.progressContainer {
+  padding-left: var(--spacing-100);
+  @include flex_verticalAlign(center);
+  gap: var(--spacing-100);
+
+  .masterCard {
+    @include btn_like_box;
+    @include flex_verticalAlign(center);
+    gap: var(--spacing-75);
+    background-color: var(--color-teal-400);
+
+    .icon {
+      width: 16px;
+      height: 16px;
+    }
+    .text {
+      @include text-preset-6;
+      letter-spacing: -0.03em;
+    }
+    .progressData {
+      @include text-preset-6;
+      opacity: 0.8;
+      letter-spacing: -0.03em;
+    }
+  }
+
+  .progressBar {
+    background-color: var(--color-neutral-0);
+    border: var(--border-flash-card);
+    border-radius: var(--radius-full);
+    width: 60px;
+    height: 8px;
+
+    .filler {
+      display: block;
+      background-color: var(--color-neutral-900);
+      border-radius: var(--radius-full);
+      height: 100%;
+      width: 0;
+    }
+  }
+  .progressData {
+    @include text-preset-6;
+    opacity: 0.8;
+    letter-spacing: -0.03em;
+  }
+}

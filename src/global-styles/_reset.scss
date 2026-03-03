@@ -1,4 +1,4 @@
-@use './variables' as *;
+@use 'variables' as *;
 
 * {
   padding: 0px;
@@ -11,17 +11,24 @@
 *::after {
   box-sizing: border-box;
 }
-html {
-  font-family: var(--font-poppins-regular);
-}
 
 body {
-  background: var(--colors-neutral-100);
+  background-color: #f7f3f0;
 }
 
 .featureWrapper {
   max-width: 1240px;
   margin: auto;
+
+  @media (max-width: 1260px) {
+    padding-left: var(--spacing-400);
+    padding-right: var(--spacing-400);
+  }
+
+  @media (max-width: 500px) {
+    padding-left: var(--spacing-200);
+    padding-right: var(--spacing-200);
+  }
 }
 a,
 a:link,

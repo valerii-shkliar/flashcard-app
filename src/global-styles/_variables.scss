@@ -3,13 +3,13 @@
   --color-neutral-600: #6d5b4d;
   --color-neutral-100: #f7f3f0;
   --color-neutral-0: #ffffff;
-  --color-accent-yellow-500: #f8cb46;
-  --color-accent-blue-400: #92adeb;
-  --color-accent-blue-600: #5072c7;
-  --color-accent-teal-400: #47d9c9;
-  --color-accent-pink-400: #fc8ae5;
-  --color-accent-pink-500: #f073a3;
-  --color-accent-pink-700: #e11966;
+  --color-yellow-500: #f8cb46;
+  --color-blue-400: #92adeb;
+  --color-blue-600: #5072c7;
+  --color-teal-400: #47d9c9;
+  --color-pink-400: #fc8ae5;
+  --color-pink-500: #f073a3;
+  --color-pink-700: #e11966;
 
   --font-size-extra-sm: 0.75rem;
   --font-size-sm: 0.875rem;
@@ -58,5 +58,9 @@
   --radius-16: 16px;
   --radius-20: 20px;
   --radius-24: 24px;
-  --radius-full: 50%;
+  --radius-full: 9999px;
+
+  --border-flash-card: 1px solid var(--color-neutral-900);
+
+  --transition: all 0.4s ease;
 }

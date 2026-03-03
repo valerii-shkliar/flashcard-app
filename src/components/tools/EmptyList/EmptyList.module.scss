@@ -1,0 +1,19 @@
+@use '../../../global-styles/setup-style' as *;
+
+.emptyList {
+  .title {
+    @include text-preset-2;
+    color: var(--color-neutral-900);
+    margin-bottom: var(--spacing-125);
+    text-align: center;
+  }
+  .text {
+    @include text-preset-4-regular;
+    color: var(--color-neutral-900);
+    text-align: center;
+    margin-bottom: var(--spacing-400);
+  }
+  .btnContainer {
+    @include flex_horizonAlign(center);
+  }
+}

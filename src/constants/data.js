@@ -1,0 +1,321 @@
+import { v4 as uuidv4 } from 'uuid';
+
+export const amountCardsOnPage = 12;
+
+export const MAX_PROGRESS_FOR_CARD = 5;
+export const MODE = {
+  STUDY: 'study',
+  CARDS: 'cards',
+};
+export const areas = [
+  'Art',
+  'CSS',
+  'Geography',
+  'History',
+  'HTML',
+  'JavaScript',
+  'Literature',
+  'Mathematics',
+  'Programming Concepts',
+  'Science',
+  'Web Development',
+];
+
+export const BTN_TYPES = {
+  PRIMARY: 'primary',
+  SECONDARY: 'secondary',
+  THIRDLY: 'thirdly',
+};
+
+export const MODAL_TYPES = {
+  DELETE: 'delete',
+  EDIT: 'edit',
+};
+// export const cards = [];
+
+export const cards = [
+  {
+    question: 'What does HTML stand for?',
+    answer: 'HyperText Markup Language',
+    area: 'Web Development',
+    progress: 0,
+    id: uuidv4(),
+  },
+  {
+    question: `What is the difference between 'let' and 'const' in JavaScript?`,
+    answer: `'let' allows you to reassign the variable, while 'const' creates a constant reference that cannot be reassigned. Both are block-scoped.`,
+    area: 'JavaScript',
+    progress: 2,
+    id: uuidv4(),
+  },
+  {
+    question: 'What does CSS stand for?',
+    answer: 'Cascading Style Sheets',
+    area: 'Web Development',
+    progress: 0,
+    id: uuidv4(),
+  },
+  {
+    question: 'What is the capital of France?',
+    answer: 'Paris',
+    area: 'Geography',
+    progress: 5,
+    id: uuidv4(),
+  },
+  {
+    question: 'What is a closure in JavaScript?',
+    answer:
+      'A closure is a function that has access to variables in its outer (enclosing) lexical scope, even after the outer function has returned.',
+    area: 'JavaScript',
+    progress: 1,
+    id: uuidv4(),
+  },
+  {
+    question: 'What does DOM stand for?',
+    answer: 'Document Object Model',
+    area: 'Web Development',
+    progress: 3,
+    id: uuidv4(),
+  },
+  {
+    question: 'What is the Pythagorean theorem?',
+    answer: 'In a right triangle, a² + b² = c², where c is the hypotenuse',
+    area: 'Mathematics',
+    progress: 5,
+    id: uuidv4(),
+  },
+
+  {
+    question: `What is the difference between ' == ' and ' === ' in JavaScript?`,
+    answer: `'==' checks for value equality with type coercion, while '===' checks for both value and type equality (strict equality).`,
+    area: 'JavaScript',
+    progress: 4,
+    id: uuidv4(),
+  },
+  {
+    question: 'What is Flexbox used for in CSS?',
+    answer:
+      'Flexbox is a CSS layout model that helps distribute space and align items in a container, making it easier to create responsive layouts.',
+    area: 'CSS',
+    progress: 0,
+    id: uuidv4(),
+  },
+  {
+    question: `Who wrote 'Romeo and Juliet'?`,
+    answer: 'William Shakespeare',
+    area: 'Literature',
+    progress: 5,
+    id: uuidv4(),
+  },
+  {
+    question: `What is the purpose of the 'async' keyword in JavaScript?`,
+    answer: `The 'async' keyword declares an asynchronous function that returns a Promise and allows the use of 'await' inside it.`,
+    area: 'JavaScript',
+    progress: 2,
+    id: uuidv4(),
+  },
+  {
+    question: `What are semantic HTML elements?`,
+    answer: `HTML elements that clearly describe their meaning to both the browser and the developer, like <header>, <nav>, <article>, <footer>, etc.`,
+    area: 'HTML',
+    progress: 1,
+    id: uuidv4(),
+  },
+  {
+    question: `What is the speed of light?`,
+    answer: `Approximately 299,792,458 meters per second (or about 186,282 miles per second)`,
+    area: 'Science',
+    progress: 0,
+    id: uuidv4(),
+  },
+  {
+    question: `What is event bubbling in JavaScript?`,
+    answer: `Event bubbling is when an event triggered on a child element propagates up through its parent elements in the DOM tree.`,
+    area: 'JavaScript',
+    progress: 3,
+    id: uuidv4(),
+  },
+  {
+    question: `What is the box model in CSS?`,
+    answer: `The CSS box model describes the rectangular boxes generated for elements, consisting of content, padding, border, and margin.`,
+    area: 'CSS',
+    progress: 4,
+    id: uuidv4(),
+  },
+  {
+    question: `What year did World War II end?`,
+    answer: `1945`,
+    area: 'History',
+    progress: 5,
+    id: uuidv4(),
+  },
+  {
+    question: `What is the difference between null and undefined in JavaScript?`,
+    answer: `'undefined' means a variable has been declared but not assigned a value. 'null' is an intentional assignment representing no value or empty object.`,
+    area: 'JavaScript',
+    progress: 2,
+    id: uuidv4(),
+  },
+  {
+    question: `What is CSS Grid?`,
+    answer: `CSS Grid is a two-dimensional layout system that allows you to create complex responsive layouts using rows and columns.`,
+    area: 'CSS',
+    progress: 1,
+    id: uuidv4(),
+  },
+  {
+    question: `What is the largest planet in our solar system?`,
+    answer: `Jupiter`,
+    area: 'Science',
+    progress: 5,
+    id: uuidv4(),
+  },
+  {
+    question: `What is hoisting in JavaScript?`,
+    answer: `Hoisting is JavaScript's behavior of moving variable and function declarations to the top of their scope before code execution.`,
+    area: 'JavaScript',
+    progress: 0,
+    id: uuidv4(),
+  },
+  {
+    question: `What does the 'viewport' meta tag do?`,
+    answer: `It controls how a webpage is displayed on mobile devices by setting the viewport width and initial scale for responsive design.`,
+    area: 'HTML',
+    progress: 3,
+    id: uuidv4(),
+  },
+  {
+    question: `What is the capital of Japan?`,
+    answer: `Tokyo`,
+    area: 'Geography',
+    progress: 5,
+    id: uuidv4(),
+  },
+  {
+    question: `What is the 'this' keyword in JavaScript?`,
+    answer: `'this' refers to the object that is executing the current function. Its value depends on how the function is called.`,
+    area: 'JavaScript',
+    progress: 2,
+    id: uuidv4(),
+  },
+  {
+    question: `What is specificity in CSS?`,
+    answer: `Specificity determines which CSS rule is applied when multiple rules target the same element. It's calculated based on selector types (inline, IDs, classes, elements).`,
+    area: 'CSS',
+    progress: 1,
+    id: uuidv4(),
+  },
+  {
+    question: `How many continents are there?`,
+    answer: `Seven: Africa, Antarctica, Asia, Europe, North America, Australia (Oceania), and South America`,
+    area: 'Geography',
+    progress: 5,
+    id: uuidv4(),
+  },
+  {
+    question: `What is the difference between a for loop and forEach in JavaScript?`,
+    answer: `A for loop can be broken or continued with keywords, while forEach cannot. For loops can iterate over any iterable, forEach is only for arrays.`,
+    area: 'JavaScript',
+    progress: 0,
+    id: uuidv4(),
+  },
+  {
+    question: `What is localStorage in the browser?`,
+    answer: `localStorage is a web storage API that allows you to store key-value pairs in the browser with no expiration date, persisting even after the browser is closed.`,
+    area: 'Web Development',
+    progress: 4,
+    id: uuidv4(),
+  },
+  {
+    question: `What is the chemical formula for water?`,
+    answer: `H₂O (two hydrogen atoms and one oxygen atom)`,
+    area: 'Science',
+    progress: 5,
+    id: uuidv4(),
+  },
+  {
+    question: `What is a Promise in JavaScript?`,
+    answer: `A Promise is an object representing the eventual completion or failure of an asynchronous operation, with three states: pending, fulfilled, or rejected.`,
+    area: 'JavaScript',
+    progress: 3,
+    id: uuidv4(),
+  },
+  {
+    question: `What is the purpose of the 'alt' attribute in an <img> tag?`,
+    answer: `The 'alt' attribute provides alternative text for an image if it cannot be displayed, and is essential for accessibility and SEO.`,
+    area: 'HTML',
+    progress: 2,
+    id: uuidv4(),
+  },
+
+  {
+    question: `Who painted the Mona Lisa?`,
+    answer: `Leonardo da Vinci`,
+    area: 'Art',
+    progress: 5,
+    id: uuidv4(),
+  },
+  {
+    question: `What is the spread operator in JavaScript?`,
+    answer: `The spread operator (...) expands an iterable (like an array) into individual elements, useful for copying arrays or passing multiple arguments.`,
+    area: 'JavaScript',
+    progress: 1,
+    id: uuidv4(),
+  },
+  {
+    question: `What is the z-index property in CSS?`,
+    answer: `The z-index property controls the stacking order of positioned elements, with higher values appearing in front of lower values.`,
+    area: 'CSS',
+    progress: 0,
+    id: uuidv4(),
+  },
+  {
+    question: `What is destructuring in JavaScript?`,
+    answer: `Destructuring is a syntax that allows you to unpack values from arrays or properties from objects into distinct variables in a concise way.`,
+    area: 'JavaScript',
+    progress: 2,
+    id: uuidv4(),
+  },
+  {
+    question: `What does HTTP stand for?`,
+    answer: `HyperText Transfer Protocol`,
+    area: 'Web Development',
+    progress: 4,
+    id: uuidv4(),
+  },
+  {
+    question: `What is the difference between margin and padding in CSS?`,
+    answer: `Margin is the space outside an element's border, while padding is the space inside an element's border, between the border and content.`,
+    area: 'CSS',
+    progress: 5,
+    id: uuidv4(),
+  },
+  {
+    question: `What is an API?`,
+    answer: `Application Programming Interface - a set of rules and protocols that allows different software applications to communicate with each other.`,
+    area: 'Programming Concepts',
+    progress: 3,
+    id: uuidv4(),
+  },
+  {
+    question: `What is the capital of Australia?`,
+    answer: `Canberra`,
+    area: 'Geography',
+    progress: 0,
+    id: uuidv4(),
+  },
+  {
+    question: `What is a callback function in JavaScript?`,
+    answer: `A callback function is a function passed as an argument to another function, to be executed after the first function completes.`,
+    area: 'JavaScript',
+    progress: 4,
+    id: uuidv4(),
+  },
+  {
+    question: `What is responsive web design?`,
+    answer: `An approach to web design that makes web pages render well on various devices and screen sizes using flexible layouts, images, and CSS media queries.`,
+    area: 'Web Development',
+    progress: 5,
+    id: uuidv4(),
+  },
+];

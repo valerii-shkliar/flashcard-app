@@ -1,0 +1,47 @@
+@use '../../../global-styles/setup-style' as *;
+
+.settingsContainer {
+  @include flex_BothAlign(space-between, center);
+
+  .filterContainer {
+    @include flex_verticalAlign(center);
+    gap: var(--spacing-250);
+    position: relative;
+
+    .actionModal {
+      @include drop_down;
+      top: calc(100% + var(--spacing-100));
+      transform: translateY(50%);
+      z-index: 10;
+
+      &.active {
+        transform: translateY(0px);
+      }
+    }
+  }
+  .checkBoxContainer {
+    @include flex_verticalAlign(center);
+    gap: var(--spacing-100);
+    position: relative;
+    z-index: 10;
+
+    .label {
+      @include text-preset-4-medium;
+    }
+  }
+  .filterBtn {
+    .icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  @media (max-width: 570px) {
+    align-items: flex-start;
+
+    .filterContainer {
+      flex-direction: column;
+      gap: var(--spacing-125);
+    }
+  }
+}
