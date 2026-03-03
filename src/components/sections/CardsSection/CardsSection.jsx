@@ -18,8 +18,8 @@ function CardsSection() {
   const cardsList = useSelector(getVisibleCards);
   const renderedCardsList = cardsList.slice(0, amountCards);
   const isFiltered = useSelector(isFilteredSelector);
-  const isCards = cardsList.length !== 0;
-  const canLoadMore = renderedCardsList.length !== cardsList.length;
+  const isCards = cardsList.length > 0;
+  const canLoadMore = cardsList.length > renderedCardsList.length;
 
   function handleLoadClick() {
     setAmountCards(amountCards + amountCardsOnPage);

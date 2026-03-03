@@ -12,6 +12,7 @@
       @include drop_down;
       top: calc(100% + var(--spacing-100));
       transform: translateY(50%);
+      z-index: 10;
 
       &.active {
         transform: translateY(0px);
@@ -21,6 +22,8 @@
   .checkBoxContainer {
     @include flex_verticalAlign(center);
     gap: var(--spacing-100);
+    position: relative;
+    z-index: 10;
 
     .label {
       @include text-preset-4-medium;

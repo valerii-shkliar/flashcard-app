@@ -14,7 +14,6 @@ function Settings({ className }) {
   const [isActiveModal, setIsActiveModal] = useState(false);
   const dispatch = useDispatch();
   const isHide = useSelector(isMasteredHide);
-  const isActiveModalRef = useRef(isActiveModal);
   const customActionModalClass = clsx(style.actionModal, isActiveModal && style.active);
   const customSettingsClass = clsx(style.settingsContainer, className);
   const filterBtnRef = useRef(null);
@@ -31,25 +30,21 @@ function Settings({ className }) {
   function handleShuffleClick() {
     dispatch(shuffleCards());
   }
-
-  useEffect(() => {
-    isActiveModalRef.current = isActiveModal;
-  }, [isActiveModal]);
-
   useEffect(() => {
     function handleDocumentClick(e) {
-      if (!isActiveModalRef.current) return;
+      if (!isActiveModal) return;
 
       if (!modalRef.current.contains(e.target) && !filterBtnRef.current.contains(e.target)) {
         setIsActiveModal(false);
       }
     }
+
     document.addEventListener('click', handleDocumentClick);
 
     return () => {
       document.removeEventListener('click', handleDocumentClick);
     };
-  }, []);
+  }, [isActiveModal]);
 
   return (
     <div className={customSettingsClass}>

@@ -4,6 +4,8 @@
   @include flex_horizonAlign(space-between);
   padding-top: var(--spacing-300);
   padding-bottom: var(--spacing-400);
+  z-index: 10;
+  position: relative;
 
   .logoContainer {
     @include flex_center;
